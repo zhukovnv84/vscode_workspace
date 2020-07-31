@@ -58,6 +58,7 @@ resoult
 
 it is base structure , you need make some changes
 
+```
 1 - generate your ssh keys  (default - without password)
 ssh-keygen -t rsa -b 4096 -C "username"
 files will be in 
@@ -79,16 +80,19 @@ cp /home/mobaxterm/.ssh/google_compute_known_hosts  /drives/c/ssh/
 copy python and gcloud.py to c:\ssh
 cp -r /drives/c/Users/nikolai_zhukov/AppData/Local/Google/Cloud\ SDK/google-cloud-sdk/lib/ /drives/c/ssh/  (gcloud.py there are)
 cp -r /drives/c/Users/nikolai_zhukov/AppData/Local/Google/Cloud\ SDK/google-cloud-sdk/platform/bundledpython /drives/c/ssh/  (python there are)
+```
 
+```
 2 - add file  c:\ssh\id_rsa.pub to instance (connect from console.cloud.google.com) - upload file
 cat id_rsa.pub >> .ssh/authorized_keys
 (folder .ssh have to be exist or create it, file authorized_keys have to be exist or add it)
 
 find your username (run on remote instance)
 id - it will be your user in file config
+```
 
 
-
+```
 3 - change permissions for file c:\ssh\id_rsa
 
 vscode will  not connection till it will secure. Add FULL constrol  only this user in os and remove all other users. 
@@ -96,9 +100,10 @@ vscode will  not connection till it will secure. Add FULL constrol  only this us
 
 With defaul path it will not connect in my case, may be it will working in your case.
 So i make config lie this.
+```
 
-
-3 - in vscode go to Remote Explorer - Configure - open config and add
+```
+4 - in vscode go to Remote Explorer - Configure - open config and add
 
 
 Host AnyHostName
@@ -112,8 +117,9 @@ Host AnyHostName
   ProxyCommand C:\ssh\bundledpython\python.exe -S C:\ssh\lib\gcloud.py beta compute start-iap-tunnel hostname %p --listen-on-stdin --project=project_name --zone=us-east4-c --verbosity=warning
   ProxyUseFdpass no
   User your_username 
+```
   
-  
+```  
   Notes
   HostName compute.2249601509865285850                                                                     (resoult --dry-run)
   IdentityFile C:\ssh\id_rsa                                                                               (your new file generated with new permissions)
@@ -124,4 +130,5 @@ Host AnyHostName
   C:\ssh\lib\gcloud.py                                                                                     (your new file from cp) 
   beta compute start-iap-tunnel hostname %p --listen-on-stdin --project=project_name --zone=us-east4-c     (resoult --dry-run)
   User your_username  - resoult id command from instance 
+```
 
