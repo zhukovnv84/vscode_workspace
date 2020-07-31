@@ -4,6 +4,7 @@ how configure your worksapce with vscode. Connect to gcp instance with private i
 
 
 
+```
 
 1 - download
 https://code.visualstudio.com/download
@@ -36,6 +37,7 @@ unzip
   - tar -xvf google-cloud-sdk-303.0.0-linux-x86_64.tar.gz
 install 
   ./google-cloud-sdk/install.sh
+```
 
 
 After all check that gcloud init working correctly
@@ -54,7 +56,9 @@ see dry-run
 gcloud beta compute ssh --zone "us-east4-c" "instance_name" --tunnel-through-iap --project "project_name" --dry-run
 resoult 
 
+```
 /bin/ssh -t -i /home/mobaxterm/.ssh/google_compute_engine -o CheckHostIP=no -o HostKeyAlias=compute.2249601509865285850 -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/mobaxterm/.ssh/google_compute_known_hosts -o ProxyCommand /bin/python2 -S /home/mobaxterm/google-cloud-sdk/lib/gcloud.py beta compute start-iap-tunnel devbast %p --listen-on-stdin --project=project_name --zone=us-east4-c --verbosity=warning -o ProxyUseFdpass=no User@compute.2249601509865285850
+```
 
 it is base structure , you need make some changes
 
